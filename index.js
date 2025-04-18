@@ -18,6 +18,7 @@ app.use(express.json());
 
 // ==== Email Validation Route (Abstract API) ====
 app.post('/api/validate-email', async (req, res) => {
+  console.log("RQ");
   const { email } = req.body;
   const apiKey = process.env.ABSTRACT_API_KEY;
   try {
@@ -45,11 +46,11 @@ app.post('/api/validate-email', async (req, res) => {
 // console.log(frontendPath);
 // app.use(express.static(frontendPath));
 
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+// app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
