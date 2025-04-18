@@ -7,10 +7,25 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+const allowedOrigins = [
+  'https://saheeshnakamuni.github.io',
+  'http://localhost:3000'  
+];
+
+
 app.use(cors({
-  origin: ['https://saheeshnakamuni.github.io'],
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
+  origin: 'https://saheeshnakamuni.github.io',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+}));
+
+// Manually handle preflight
+app.options('*', cors({
+  origin: 'https://saheeshnakamuni.github.io',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
 
 app.use(express.json());
