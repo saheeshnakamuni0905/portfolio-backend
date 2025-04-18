@@ -7,7 +7,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://saheeshnakamuni.github.io'],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 
