@@ -8,13 +8,13 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 const allowedOrigins = [
-  'https://saheeshnakamuni.github.io',
+  'https://saheeshnakamuni0905.github.io',
   'http://localhost:3000'  
 ];
 
 
 app.use(cors({
-  origin: 'https://saheeshnakamuni.github.io',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: true
@@ -22,7 +22,7 @@ app.use(cors({
 
 // Manually handle preflight
 app.options('*', cors({
-  origin: 'https://saheeshnakamuni.github.io',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: true
